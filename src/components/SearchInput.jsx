@@ -3,8 +3,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 
 export default function SearchInput() {
   const searchParams = useSearchParams();
-  const { replace } = useRouter();
   const search = searchParams.get("search");
+  const { replace } = useRouter();
 
   const handleSearch = (e) => {
     e.preventDefault();

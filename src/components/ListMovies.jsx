@@ -1,7 +1,7 @@
-async function getMovies(query = "") {
-  const URL_TRENDING = `${process.env.URL_TMDB}/trending/movie/day?language=en-US`;
+async function getMovies(query, page) {
+  const URL_ALL_MOVIES = `${process.env.URL_TMDB}/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=popularity.desc`;
   const URL_SEARCH = `${process.env.URL_TMDB}/search/multi?query=${query}&include_adult=false&language=es-US&page=2`;
-  const URL = query.length > 0 ? URL_SEARCH : URL_TRENDING;
+  const URL = query.length > 0 ? URL_SEARCH : URL_ALL_MOVIES;
 
   const res = await fetch(URL, {
     method: "GET",
@@ -21,12 +21,12 @@ async function getMovies(query = "") {
   return res.json();
 }
 
-export default async function ListMovies({ query }) {
-  const movies = await getMovies(query);
-  console.log(movies);
+export default async function ListMovies({ query, page }) {
+  const movies = await getMovies(query, page);
+  console.log(movies.page);
 
   return (
-    <section className="w-[90%] m-auto flex flex-col gap-8">
+    <section className="w-[90%] m-auto flex flex-col gap-8 lg:flex-row lg:flex-wrap">
       {movies?.results.map((movie) => (
         <div
           key={movie.id}
