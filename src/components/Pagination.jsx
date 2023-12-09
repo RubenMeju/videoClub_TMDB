@@ -18,8 +18,8 @@ export default function Pagination() {
 
   const handlePrevPage = () => {
     const params = new URLSearchParams(searchParams);
-    const nextPage = Number(page) - 1;
-    params.set("page", nextPage.toString());
+    const prevPage = Number(page) - 1;
+    params.set("page", prevPage.toString());
 
     replace(`?page=${params.get("page").toString()}`);
   };
