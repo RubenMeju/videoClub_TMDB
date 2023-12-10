@@ -1,27 +1,11 @@
 import { orderDate } from "@/utils/orderDate";
-
-async function getMovieByID(id) {
-  console.log(id);
-
-  const URL_BY_ID = `${process.env.URL_TMDB}/movie/${id}?language=es-ES`;
-  const res = await fetch(URL_BY_ID, {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization: `Bearer ${process.env.API_KEY_TMDB}`,
-    },
-  });
-  if (!res.ok) {
-    // This will activate the closest `error.js` Error Boundary
-    throw new Error("Failed to fetch data");
-  }
-
-  return res.json();
-}
+import { getMovieByID } from "../services/getMovieByID";
+import AddFavorites from "@/components/client/AddFavorites";
 
 export default async function MovieIdPage({ params }) {
   const data = await getMovieByID(params?.id);
   console.log(data);
+
   return (
     <div>
       <div className="relative pt-8 flex justify-end items-center max-w-4xl">
@@ -58,6 +42,8 @@ export default async function MovieIdPage({ params }) {
 
         <p className="text-white">Puntuación: {data.vote_average}</p>
       </section>
+
+      <AddFavorites movie={data} />
     </div>
   );
 }

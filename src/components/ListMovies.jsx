@@ -1,5 +1,6 @@
 import { orderDate } from "@/utils/orderDate";
 import Link from "next/link";
+import AddFavorites from "./client/AddFavorites";
 
 async function getMovies(query, page) {
   const URL_ALL_MOVIES = `${process.env.URL_TMDB}/discover/movie?include_adult=false&include_video=false&language=es-ES&page=${page}`;
@@ -34,7 +35,7 @@ export default async function ListMovies({ query, page }) {
         <Link
           href={`/${movie.id}`}
           key={movie.id}
-          className="w-full max-w-sm flex md:flex-col rounded-lg overflow-hidden bg-neutral-900"
+          className="w-full max-w-sm flex md:flex-col rounded-lg overflow-hidden bg-neutral-950"
         >
           <div>
             <img
@@ -51,6 +52,7 @@ export default async function ListMovies({ query, page }) {
 
             <p className="text-white">Puntuación: {movie.vote_average}</p>
           </div>
+          <AddFavorites movie={movie} />
         </Link>
       ))}
     </div>
