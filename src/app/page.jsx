@@ -7,7 +7,6 @@ import Loading from "./Loading";
 export default async function HomePage({ searchParams }) {
   const query = searchParams?.search || "";
   const page = searchParams?.page || "1";
-
   return (
     <div>
       <SearchInput />
