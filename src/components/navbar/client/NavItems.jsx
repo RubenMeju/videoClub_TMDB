@@ -17,16 +17,7 @@ export default function NavItems() {
           Películas
         </Link>
       </li>
-      <li>
-        <Link
-          href="/watched"
-          className={` ${
-            pathname === "/watched" ? " border-b border-blue-500" : null
-          } text-xl text-neutral-100`}
-        >
-          Vistas
-        </Link>
-      </li>
+
       <li>
         <Link
           href="/favorites"

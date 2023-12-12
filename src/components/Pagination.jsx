@@ -5,11 +5,12 @@ import React from "react";
 
 export default function Pagination() {
   const searchParams = useSearchParams();
-  const page = searchParams.get("page");
+  const page = searchParams.get("page") === 0 ? 1 : searchParams.get("page");
   const { replace } = useRouter();
 
   const handleNextPage = () => {
     const params = new URLSearchParams(searchParams);
+    console.log(Number(page));
     const nextPage = Number(page) + 1;
     params.set("page", nextPage.toString());
 

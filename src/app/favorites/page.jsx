@@ -5,7 +5,7 @@ import CardMovie from "@/components/CardMovie";
 export default function favoritesPage() {
   const movies = JSON.parse(localStorage.getItem("movies"));
   return (
-    <div className="w-[90%] m-auto flex flex-col gap-8 lg:flex-row lg:flex-wrap">
+    <div className="w-[90%] m-auto mt-8 flex flex-wrap justify-between gap-y-8">
       {movies.map((movie) => (
         <CardMovie key={movie.id} movie={movie} />
       ))}
