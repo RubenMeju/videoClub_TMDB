@@ -1,5 +1,5 @@
 import Link from "next/link";
-import AddFavorites from "./client/AddFavorites";
+import AddFavorites from "./client/AddWatched";
 import { orderDate } from "@/utils/orderDate";
 
 export default function CardMovie({ movie }) {

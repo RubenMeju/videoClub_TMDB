@@ -20,12 +20,12 @@ export default function NavItems() {
 
       <li>
         <Link
-          href="/favorites"
+          href="/watched"
           className={` ${
-            pathname === "/favorites" ? " border-b border-blue-500" : null
+            pathname === "/watched" ? " border-b border-blue-500" : null
           } text-xl text-neutral-100`}
         >
-          Favoritos
+          Vistas
         </Link>
       </li>
     </ul>

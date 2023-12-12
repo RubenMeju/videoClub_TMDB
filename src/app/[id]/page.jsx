@@ -1,6 +1,6 @@
 import { orderDate } from "@/utils/orderDate";
 import { getMovieByID } from "../services/getMovieByID";
-import AddFavorites from "@/components/client/AddFavorites";
+import AddWatched from "@/components/client/AddWatched";
 
 export default async function MovieIdPage({ params }) {
   const data = await getMovieByID(params?.id);
@@ -25,7 +25,7 @@ export default async function MovieIdPage({ params }) {
       <section className="w-[90%] m-auto py-8 flex flex-col gap-4">
         <header>
           <h1 className="text-white text-3xl text-center font-semibold">
-            {data.original_title}
+            {data.title}
           </h1>
 
           <p className="text-neutral-400 text-center">
@@ -41,9 +41,8 @@ export default async function MovieIdPage({ params }) {
         </div>
 
         <p className="text-white">Puntuación: {data.vote_average}</p>
+        <AddWatched movie={data} />
       </section>
-
-      <AddFavorites movie={data} />
     </div>
   );
 }
