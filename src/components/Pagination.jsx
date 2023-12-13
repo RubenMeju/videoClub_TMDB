@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter, useSearchParams } from "next/navigation";
-import React from "react";
 
-export default function Pagination() {
+export default function Pagination({ currentPage, totalPages }) {
+  console.log(totalPages);
   const searchParams = useSearchParams();
   const page = searchParams.get("page") === 0 ? 1 : searchParams.get("page");
   const { replace } = useRouter();
@@ -11,33 +11,35 @@ export default function Pagination() {
   const handleNextPage = () => {
     const params = new URLSearchParams(searchParams);
     console.log(Number(page));
-    const nextPage = Number(page) + 1;
+    const nextPage = Number(currentPage) + 1;
     params.set("page", nextPage.toString());
 
-    replace(`?page=${params.get("page").toString()}`);
+    replace(`?page=${nextPage.toString()}`);
   };
 
   const handlePrevPage = () => {
     const params = new URLSearchParams(searchParams);
     const prevPage = Number(page) - 1;
-    params.set("page", prevPage.toString());
+
+    if (prevPage < 1) {
+      return;
+    } else {
+      params.set("page", prevPage.toString());
+    }
 
     replace(`?page=${params.get("page").toString()}`);
   };
   return (
-    <div className="flex flex-col items-center">
+    <div className="m-10 flex flex-col items-center">
       <span className="text-sm text-gray-700 dark:text-gray-400">
         Página
-        <span className="font-semibold text-gray-900 dark:text-white">
-          {page}
+        <span className="font-semibold text-gray-900 dark:text-white m-2">
+          {currentPage}
         </span>
         de
-        <span className="font-semibold text-gray-900 dark:text-white">
-          {page}
+        <span className="font-semibold text-gray-900 dark:text-white m-2">
+          {totalPages}
         </span>
-        of
-        <span className="font-semibold text-gray-900 dark:text-white">100</span>
-        Entries
       </span>
       <div className="inline-flex mt-2 xs:mt-0">
         <button

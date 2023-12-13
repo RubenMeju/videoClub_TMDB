@@ -10,19 +10,19 @@ export default async function HomePage({ searchParams }) {
   const page = searchParams?.page || "1";
 
   const movies = await getMovies(query, page);
-
+  console.log(movies.total_pages);
   return (
     <div>
       <SearchInput />
 
       <Suspense key={query} fallback={<Loading />}>
-        <div className="w-full m-auto flex flex-wrap justify-between gap-y-8">
+        <div className="w-[90%] m-auto flex flex-wrap justify-between gap-y-8 2xl:w-full 2xl:gap-x-8">
           {movies?.results.map((movie) => (
             <CardMovie key={movie.id} movie={movie} />
           ))}
         </div>
       </Suspense>
-      <Pagination />
+      <Pagination currentPage={movies.page} totalPages={movies.total_pages} />
     </div>
   );
 }

@@ -9,14 +9,13 @@ export default function SearchInput() {
   const handleSearch = (e) => {
     e.preventDefault();
     const query = e.target.search.value;
-    console.log("query: ", query);
     const params = new URLSearchParams(searchParams);
     params.set("search", query);
 
     replace(`?search=${params.get("search").toString()}`);
   };
   return (
-    <form className="w-full m-auto py-10" onSubmit={handleSearch}>
+    <form className="w-[90%] m-auto py-10 2xl:w-full" onSubmit={handleSearch}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only"

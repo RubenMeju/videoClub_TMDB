@@ -5,7 +5,7 @@ export default function CardMovie({ movie }) {
     <Link
       href={`/${movie.id}`}
       key={movie.id}
-      className="w-[48%] md:w-auto bg-neutral-950 "
+      className="w-[48%] md:w-auto bg-neutral-950 hover:scale-105 transition duration-300"
     >
       <img
         src={`https://image.tmdb.org/t/p/w200/${movie.poster_path}`}
