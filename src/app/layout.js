@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
     <html lang="es">
       <body className={`${inter.className} bg-neutral-900`}>
         <NavBar />
-        <div className="w-full xl:w-[80%] m-auto">{children}</div>
+        <div className="w-full 2xl:w-[50%] m-auto">{children}</div>
       </body>
     </html>
   );

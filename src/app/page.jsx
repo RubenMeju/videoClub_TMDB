@@ -16,7 +16,7 @@ export default async function HomePage({ searchParams }) {
       <SearchInput />
 
       <Suspense key={query} fallback={<Loading />}>
-        <div className="w-[90%] m-auto flex flex-wrap justify-between gap-y-8">
+        <div className="w-[90%] m-auto flex flex-wrap justify-between gap-y-8 lg:gap-x-8">
           {movies?.results.map((movie) => (
             <CardMovie key={movie.id} movie={movie} />
           ))}
