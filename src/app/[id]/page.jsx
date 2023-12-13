@@ -1,10 +1,12 @@
 import { convertirMinutosAHorasYMinutos, orderDate } from "@/utils/orderDate";
 import { getMovieByID } from "../services/getMovieByID";
 import AddWatched from "@/components/client/AddWatched";
+import ReviewsMovie from "@/components/ReviewsMovie";
+import CreditsMovie from "@/components/CreditsMovie";
 
 export default async function MovieIdPage({ params }) {
   const data = await getMovieByID(params?.id);
-  console.log(data);
+  //console.log(data);
 
   const { horas, minutos } = convertirMinutosAHorasYMinutos(data.runtime);
 
@@ -56,6 +58,10 @@ export default async function MovieIdPage({ params }) {
 
         <p className="text-white">Puntuación: {data.vote_average}</p>
         <AddWatched movie={data} />
+
+        <CreditsMovie id={data.id} />
+
+        <ReviewsMovie id={data.id} />
       </section>
     </div>
   );
