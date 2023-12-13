@@ -16,7 +16,7 @@ export default function SearchInput() {
     replace(`?search=${params.get("search").toString()}`);
   };
   return (
-    <form className="w-[90%] m-auto py-10" onSubmit={handleSearch}>
+    <form className="w-full m-auto py-10" onSubmit={handleSearch}>
       <label
         htmlFor="default-search"
         className="mb-2 text-sm font-medium text-gray-900 sr-only"

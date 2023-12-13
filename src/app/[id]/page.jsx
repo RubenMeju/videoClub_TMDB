@@ -7,8 +7,8 @@ export default async function MovieIdPage({ params }) {
   console.log(data);
 
   return (
-    <div>
-      <div className="relative pt-8 flex justify-end items-center max-w-4xl">
+    <div className="w-[50%] m-auto">
+      <div className="relative pt-8 flex justify-end items-center m-auto">
         <img
           src={`https://image.tmdb.org/t/p/w200/${data.poster_path}`}
           alt={data.original_title}
