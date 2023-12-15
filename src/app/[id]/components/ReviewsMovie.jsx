@@ -2,7 +2,6 @@ import { getReviewByID } from "@/app/services/getReviewByID";
 
 export default async function ReviewsMovie(id) {
   const reviews = await getReviewByID(id);
-  console.log(reviews);
 
   return (
     <details>

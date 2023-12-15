@@ -1,8 +1,8 @@
 import { convertirMinutosAHorasYMinutos, orderDate } from "@/utils/orderDate";
 import { getMovieByID } from "../services/getMovieByID";
-import AddWatched from "@/components/client/AddWatched";
-import ReviewsMovie from "@/components/ReviewsMovie";
-import CreditsMovie from "@/components/CreditsMovie";
+import AddWatched from "@/app/[id]/components/client/AddWatched";
+import ReviewsMovie from "@/app/[id]/components/ReviewsMovie";
+import CreditsMovie from "@/app/[id]/components/CreditsMovie";
 
 export default async function MovieIdPage({ params }) {
   const data = await getMovieByID(params?.id);

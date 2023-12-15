@@ -1,5 +1,6 @@
 import { getCreditsMovieByID } from "@/app/services/getCreditsMovieByID.js";
 import SliderCharacters from "./client/SliderCharacters";
+import Link from "next/link";
 
 export default async function CreditsMovie({ id }) {
   const credits = await getCreditsMovieByID(id);
@@ -26,6 +27,8 @@ export default async function CreditsMovie({ id }) {
                 {actor.original_name}
               </h1>
               <h1 className=" text-sm text-neutral-300">{actor.character}</h1>
+
+              <Link href="/person">Ver biografía</Link>
             </div>
           </div>
         ))}
