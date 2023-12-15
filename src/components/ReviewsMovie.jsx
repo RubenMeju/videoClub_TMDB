@@ -5,14 +5,16 @@ export default async function ReviewsMovie(id) {
   console.log(reviews);
 
   return (
-    <section className="flex flex-col gap-8">
-      <span className="text-3xl text-neutral-100">Criticas</span>
+    <details>
+      <summary className="text-orange-500 text-2xl cursor-pointer">
+        Criticas
+      </summary>
       {reviews.results.map((review) => (
-        <div key={review.id}>
+        <div key={review.id} className="py-2">
           <h1 className="text-white">{review.author}</h1>
           <span className="text-white">{review.content}</span>
         </div>
       ))}
-    </section>
+    </details>
   );
 }

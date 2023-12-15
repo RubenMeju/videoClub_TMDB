@@ -11,54 +11,62 @@ export default async function MovieIdPage({ params }) {
   const { horas, minutos } = convertirMinutosAHorasYMinutos(data.runtime);
 
   return (
-    <div className="w-full mt-20 xl:flex">
-      <div className="relative max-w-xl pt-8 flex justify-end items-center m-auto xl:w-[50%]">
-        <img
-          src={`https://image.tmdb.org/t/p/w200/${data.poster_path}`}
-          alt={data.original_title}
-          className="absolute left-4 w-[25%]"
-        />
+    <div className="w-[90%] m-auto">
+      <div className="flex flex-col gap-4 py-8 xl:flex-row">
+        <section className="relative w-full flex justify-end items-center xl:w-[50%]">
+          <img
+            src={`https://image.tmdb.org/t/p/w200/${data.poster_path}`}
+            alt={data.original_title}
+            className="absolute left-0 w-[25%]"
+          />
 
-        <img
-          src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`}
-          alt={data.original_title}
-          className="w-[85%] xl:w-full"
-        />
+          <img
+            src={`https://image.tmdb.org/t/p/w500/${data.backdrop_path}`}
+            alt={data.original_title}
+            className="w-[90%]"
+          />
+        </section>
+
+        <section className="w-full m-auto flex flex-col gap-4 xl:w-[50%] xl:p-8">
+          <div className="flex flex-col">
+            <h1 className="text-sky-500 text-3xl font-semibold">
+              {data.title}
+            </h1>
+
+            <div className="flex gap-2">
+              <p className="text-neutral-400 text-center">
+                {orderDate(data.release_date)}
+              </p>
+              <span className="text-neutral-50">•</span>
+              <p className="text-neutral-400 text-center">
+                {horas}h {minutos}m
+              </p>
+            </div>
+            <ul className="flex text-neutral-400">
+              {data.genres.map((genre, index) => (
+                <>
+                  <li key={genre.id}>{genre.name}</li>
+                  {index < data.genres.length - 1 && <span>,</span>}
+                </>
+              ))}
+            </ul>
+          </div>
+
+          <p className="text-neutral-400 text-xl">{data.tagline}</p>
+
+          <div>
+            <p className="text-orange-500 font-semibold text-2xl">Sipnosis</p>
+            <span className="text-neutral-100">{data.overview}</span>
+          </div>
+
+          <p className="text-white">
+            Puntuación: {data.vote_average.toFixed(1)}
+          </p>
+          <AddWatched movie={data} />
+        </section>
       </div>
 
-      <section className="w-[90%] m-auto py-8 flex flex-col gap-4 xl:w-[50%] xl:p-8">
-        <div className="flex flex-col">
-          <h1 className="text-white text-3xl font-semibold">{data.title}</h1>
-
-          <div className="flex gap-2">
-            <p className="text-neutral-400 text-center">
-              {orderDate(data.release_date)}
-            </p>
-            <span className="text-neutral-50">•</span>
-            <p className="text-neutral-400 text-center">
-              {horas}h {minutos}m
-            </p>
-          </div>
-          <ul className="flex text-neutral-400">
-            {data.genres.map((genre, index) => (
-              <>
-                <li key={genre.id}>{genre.name}</li>
-                {index < data.genres.length - 1 && <span>,</span>}
-              </>
-            ))}
-          </ul>
-        </div>
-
-        <p className="text-neutral-400 text-xl">{data.tagline}</p>
-
-        <div>
-          <p className="text-neutral-100 font-semibold text-2xl">Sipnosis</p>
-          <span className="text-neutral-100">{data.overview}</span>
-        </div>
-
-        <p className="text-white">Puntuación: {data.vote_average}</p>
-        <AddWatched movie={data} />
-
+      <section className="w-full m-auto py-8 flex flex-col gap-4 xl:w-[100%] ">
         <CreditsMovie id={data.id} />
 
         <ReviewsMovie id={data.id} />

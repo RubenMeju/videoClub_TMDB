@@ -7,7 +7,7 @@ export default function WatchedPage() {
     : [];
 
   return (
-    <div className="w-full m-auto mt-8 flex flex-wrap justify-between gap-y-8 md:justify-normal md:gap-x-8">
+    <div className="w-[90%] m-auto mt-8 flex flex-wrap justify-between gap-y-8 md:justify-normal md:gap-x-8 2xl:w-full">
       {movies.map((movie) => (
         <CardMovie key={movie.id} movie={movie} />
       ))}
