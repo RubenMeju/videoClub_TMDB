@@ -11,7 +11,7 @@ export default async function MovieIdPage({ params }) {
   const { horas, minutos } = convertirMinutosAHorasYMinutos(data.runtime);
 
   return (
-    <div className="w-[90%] m-auto">
+    <div className="w-[90%] m-auto 2xl:w-full">
       <div className="flex flex-col gap-4 py-8 xl:flex-row">
         <section className="relative w-full flex justify-end items-center xl:w-[50%]">
           <img
